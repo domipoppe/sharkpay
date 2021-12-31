@@ -2,15 +2,22 @@
 
 declare(strict_types=1);
 
-namespace domipoppe\sharkpay;
+namespace domipoppe\sharkpay\Total;
 
+use domipoppe\sharkpay\Currency\Currency;
 use domipoppe\sharkpay\Exception\MixedCurrenciesException;
+use domipoppe\sharkpay\Exception\TaxKeyMixedRatesException;
 use domipoppe\sharkpay\Exception\UnknownDiscountTypeException;
+use domipoppe\sharkpay\Order;
+use domipoppe\sharkpay\Position;
+use domipoppe\sharkpay\Price;
+use domipoppe\sharkpay\Tax\Tax;
+use domipoppe\sharkpay\Tax\TotalTaxHandler;
 
 /**
  * Class TotalCalculator
  *
- * This class will calculate total costs of an Order (substracting discounts, splitting tax etc)
+ * This class will calculate total costs of an Order (removing discounts, splitting tax etc.)
  *
  * @package domipoppe\sharkpay
  */
@@ -18,34 +25,34 @@ class TotalCalculator
 {
     /**
      * @param Order $order
+     *
      * @return Total
      *
      * @throws MixedCurrenciesException
      * @throws UnknownDiscountTypeException
+     * @throws TaxKeyMixedRatesException
      */
     public static function getTotal(Order $order): Total
     {
-        $currency = $order->getPositions()[0]->getPrice()->getCurrency();
+        $currency = $order->getPositions()[0]->getSinglePrice()->getCurrency();
 
-        $totalPrices = self::calculatePositionPrices($order, $currency);
-        $totalNetto = $totalPrices['totalNetto'];
-        $totalTax = $totalPrices['totalTax'];
-        $totalBrutto = $totalPrices['totalBrutto'];
-        $taxPositions = $totalPrices['taxPositions'];
+        $totalPriceSummary = self::calculatePositionPrices($order, $currency);
+        $totalNetto = $totalPriceSummary->getTotalNetto();
+        $totalTax = $totalPriceSummary->getTotalTax();
+        $totalBrutto = $totalPriceSummary->getTotalBrutto();
+        $taxPositions = $totalPriceSummary->getTaxPositions();
 
         $discountPosition = self::calculateDiscounts($order, $totalNetto, $currency);
         if ($discountPosition instanceof Position) {
             $order->addPosition($discountPosition);
-            $totalPrices = self::calculatePositionPrices($order, $currency);
-            $totalNetto = $totalPrices['totalNetto'];
-            $totalTax = $totalPrices['totalTax'];
-            $totalBrutto = $totalPrices['totalBrutto'];
-            $taxPositions = $totalPrices['taxPositions'];
+            $totalPriceSummary = self::calculatePositionPrices($order, $currency);
+            $totalNetto = $totalPriceSummary->getTotalNetto();
+            $totalTax = $totalPriceSummary->getTotalTax();
+            $totalBrutto = $totalPriceSummary->getTotalBrutto();
+            $taxPositions = $totalPriceSummary->getTaxPositions();
         }
 
-        // this is the totalPrices, the tax is set to 0% as they should not calculate/add anything to the price
-        // so whatever you might get from it (getBrutto() - getNetto()) it's always the same
-        // we mock it like this to ensure our format is correct, and we don't cause any calculation issues
+        // this is the totalPrices (summarized of all other totals), tax is set to 0% as we do not want any calculation here anymore
         $totalPriceNetto = new Price($totalNetto, $currency, new Tax('NONE', 0));
         $totalPriceTax = new Price($totalTax, $currency, new Tax('NONE', 0));
         $totalPriceBrutto = new Price($totalBrutto, $currency, new Tax('NONE', 0));
@@ -54,13 +61,14 @@ class TotalCalculator
     }
 
     /**
-     * @param Order $order
-     * @param float $totalNetto
-     * @param Currency\Currency $currency
+     * @param Order    $order
+     * @param float    $totalNetto
+     * @param Currency $currency
+     *
      * @return Position|null
      * @throws UnknownDiscountTypeException
      */
-    private static function calculateDiscounts(Order $order, float $totalNetto, Currency\Currency $currency): ?Position
+    private static function calculateDiscounts(Order $order, float $totalNetto, Currency $currency): ?Position
     {
         if (\count($order->getDiscounts()) > 0) {
             $totalDiscountAmount = 0.00;
@@ -92,40 +100,37 @@ class TotalCalculator
     }
 
     /**
-     * @param Order $order
-     * @param Currency\Currency $currency
-     * @return array
+     * @param Order    $order
+     * @param Currency $currency
+     *
+     * @return TotalSummary
      * @throws MixedCurrenciesException
+     * @throws TaxKeyMixedRatesException
      */
-    private static function calculatePositionPrices(Order $order, Currency\Currency $currency): array
+    private static function calculatePositionPrices(Order $order, Currency $currency): TotalSummary
     {
-        $taxPositions = [];
+        $totalTaxHandler = new TotalTaxHandler();
         $totalNetto = 0.00;
         $totalTax = 0.00;
         $totalBrutto = 0.00;
 
         foreach ($order->getPositions() as $curPosition) {
-            if ($currency->getIsoCode() !== $curPosition->getPrice()->getCurrency()->getIsoCode()) {
-                throw new MixedCurrenciesException('The order has mixed currencies - never mix currencies in one order!');
+            if ($currency->getIsoCode() !== $curPosition->getSinglePrice()->getCurrency()->getIsoCode()) {
+                throw new MixedCurrenciesException(
+                    'The order has mixed currencies - never mix currencies in one order!'
+                );
             }
 
-            $curTaxKey = $curPosition->getPrice()->getTax()->getKey();
-            if (empty($taxPositions[$curTaxKey])) {
-                $taxPositions[$curTaxKey] = ['amount' => $curPosition->getTotalTax(), 'rate' => $curPosition->getTaxRate()];
-            } else {
-                $taxPositions[$curTaxKey]['amount'] += $curPosition->getTotalTax();
-            }
-
+            $totalTaxHandler->addTax(
+                $curPosition->getSinglePrice()->getTax()->getKey(),
+                $curPosition->getTotalTax(),
+                $curPosition->getTaxRate()
+            );
             $totalNetto += $curPosition->getTotalNetto();
             $totalTax += $curPosition->getTotalTax();
             $totalBrutto += $curPosition->getTotalBrutto();
         }
 
-        return [
-            'taxPositions' => $taxPositions,
-            'totalNetto' => $totalNetto,
-            'totalTax' => $totalTax,
-            'totalBrutto' => $totalBrutto
-        ];
+        return new TotalSummary($totalTaxHandler->getTaxPositions(), $totalNetto, $totalTax, $totalBrutto);
     }
 }

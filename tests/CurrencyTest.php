@@ -17,10 +17,10 @@ class CurrencyTest extends TestCase
     /**
      * @dataProvider dataProviderGetAsMainUnitString
      *
-     * @param float $amount
+     * @param float  $amount
      * @param string $expected
      *
-     * @covers \domipoppe\sharkpay\Currency\Currency::getMainUnitString
+     * @covers       \domipoppe\sharkpay\Currency\Currency::getMainUnitString
      */
     public function testGetMainUnitString(float $amount, string $expected): void
     {
@@ -31,10 +31,10 @@ class CurrencyTest extends TestCase
     /**
      * @dataProvider dataProviderGetAsMainUnitStringNoSymbol
      *
-     * @param float $amount
+     * @param float  $amount
      * @param string $expected
      *
-     * @covers \domipoppe\sharkpay\Currency\Currency::getMainUnitString
+     * @covers       \domipoppe\sharkpay\Currency\Currency::getMainUnitString
      */
     public function testGetMainUnitStringNoSymbol(float $amount, string $expected): void
     {
@@ -48,7 +48,7 @@ class CurrencyTest extends TestCase
      * @param float $amount
      * @param float $expected
      *
-     * @covers \domipoppe\sharkpay\Currency\Currency::getInSubUnit
+     * @covers       \domipoppe\sharkpay\Currency\Currency::getInSubUnit
      */
     public function testGetInSubUnit(float $amount, float $expected): void
     {
@@ -59,10 +59,10 @@ class CurrencyTest extends TestCase
     /**
      * @dataProvider dataProviderGetAsSubUnitString
      *
-     * @param float $amount
+     * @param float  $amount
      * @param string $expected
      *
-     * @covers \domipoppe\sharkpay\Currency\Currency::getSubUnitString
+     * @covers       \domipoppe\sharkpay\Currency\Currency::getSubUnitString
      */
     public function testGetSubUnitString(float $amount, string $expected): void
     {
@@ -73,10 +73,10 @@ class CurrencyTest extends TestCase
     /**
      * @dataProvider dataProviderGetAsSubUnitStringNoSymbol
      *
-     * @param float $amount
+     * @param float  $amount
      * @param string $expected
      *
-     * @covers \domipoppe\sharkpay\Currency\Currency::getSubUnitString
+     * @covers       \domipoppe\sharkpay\Currency\Currency::getSubUnitString
      */
     public function testGetSubUnitStringNoSymbol(float $amount, string $expected): void
     {
@@ -115,19 +115,19 @@ class CurrencyTest extends TestCase
     public function dataProviderGetAsMainUnitStringNoSymbol(): array
     {
         return [
-            '#0 Data Set: 10 should return 10,00 €' => [
+            '#0 Data Set: 10 should return 10,00 Euro' => [
                 10,
                 '10,00 Euro'
             ],
-            '#1 Data Set: 1000 should return 1.000,00 €' => [
+            '#1 Data Set: 1000 should return 1.000,00 Euro' => [
                 1000,
                 '1.000,00 Euro'
             ],
-            '#2 Data Set: 0.50 should return 0,50 €' => [
+            '#2 Data Set: 0.50 should return 0,50 Euro' => [
                 0.50,
                 '0,50 Euro'
             ],
-            '#3 Data Set: 100.50 should return 100,50 €' => [
+            '#3 Data Set: 100.50 should return 100,50 Euro' => [
                 100.50,
                 '100,50 Euro'
             ]
@@ -135,7 +135,7 @@ class CurrencyTest extends TestCase
     }
 
     /**
-     * @return \int[][]
+     * @return array[]
      */
     public function dataProviderInSubUnit(): array
     {
@@ -178,15 +178,15 @@ class CurrencyTest extends TestCase
     public function dataProviderGetAsSubUnitStringNoSymbol(): array
     {
         return [
-            '#0 Data Set: 5.10€ should return 510 ct' => [
+            '#0 Data Set: 5.10€ should return 510 Cent' => [
                 5.10,
                 '510,00 Cent'
             ],
-            '#1 Data Set: 1000€ should return 100000 ct' => [
+            '#1 Data Set: 1000€ should return 100000 Cent' => [
                 1000,
                 '100.000,00 Cent'
             ],
-            '#2 Data Set: 0.50€ should return 50 ct' => [
+            '#2 Data Set: 0.50€ should return 50 Cent' => [
                 0.50,
                 '50,00 Cent'
             ]

@@ -6,6 +6,7 @@ namespace domipoppe\sharkpay;
 
 use domipoppe\sharkpay\Exception\MixedCurrenciesException;
 use domipoppe\sharkpay\Exception\UnknownDiscountTypeException;
+use domipoppe\sharkpay\Total\TotalCalculator;
 
 /**
  * Class Order
@@ -27,7 +28,7 @@ class Order
     public function setCurrencyToAllPositions(Currency\Currency $currency): void
     {
         foreach ($this->getPositions() as $curPosition) {
-            $curPosition->getPrice()->setCurrency($currency);
+            $curPosition->getSinglePrice()->setCurrency($currency);
         }
     }
 
@@ -41,6 +42,7 @@ class Order
 
     /**
      * @param Position $position
+     *
      * @return $this
      */
     public function addPosition(Position $position): self
@@ -68,6 +70,7 @@ class Order
 
     /**
      * @param Discount $discount
+     *
      * @return $this
      */
     public function addDiscount(Discount $discount): self
@@ -78,6 +81,7 @@ class Order
 
     /**
      * @param Discount[] $discounts
+     *
      * @return $this
      */
     public function setDiscounts(array $discounts): self
@@ -87,11 +91,11 @@ class Order
     }
 
     /**
-     * @return Total
+     * @return Total\Total
      * @throws MixedCurrenciesException
-     * @throws UnknownDiscountTypeException
+     * @throws UnknownDiscountTypeException|Exception\TaxKeyMixedRatesException
      */
-    public function getTotal(): Total
+    public function getTotal(): Total\Total
     {
         return TotalCalculator::getTotal($this);
     }

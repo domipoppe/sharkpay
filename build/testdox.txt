@@ -1,45 +1,70 @@
 Order (domipoppe\sharkpay\Tests\Order)
- [x] Order mixed currencies exception
- [x] Cart no discounts same tax
+ [x] Cart no discounts mixed tax
  [x] Cart discount amount same tax
  [x] Cart discount amount mixed tax
  [x] Cart discount amount and percentage mixed tax
  [x] Cart discount amount and percentage same tax
- [x] Cart no discounts mixed tax
+ [x] Cart no discounts same tax
+ [x] Order mixed currencies exception
+ [x] Order tax key mixed rates exception
+
+Address (domipoppe\sharkpay\Tests\GEO\Address)
+ [x] Address
+
+Payable At (domipoppe\sharkpay\Tests\Invoice\PayableAt)
+ [x] Get payable at by date time
+ [x] Get payable at in days
+ [x] Get payable at now
+ [x] Get german format
+ [x] Get international format
+ [x] Get day year and month
 
 Currency (domipoppe\sharkpay\Tests\Currency)
  [x] Get main unit string with data set "#0 Data Set: 10 should return 10,00 €"
  [x] Get main unit string with data set "#1 Data Set: 1000 should return 1.000,00 €"
  [x] Get main unit string with data set "#2 Data Set: 0.50 should return 0,50 €"
  [x] Get main unit string with data set "#3 Data Set: 100.50 should return 100,50 €"
+ [x] Get main unit string no symbol with data set "#0 Data Set: 10 should return 10,00 Euro"
+ [x] Get main unit string no symbol with data set "#1 Data Set: 1000 should return 1.000,00 Euro"
+ [x] Get main unit string no symbol with data set "#2 Data Set: 0.50 should return 0,50 Euro"
+ [x] Get main unit string no symbol with data set "#3 Data Set: 100.50 should return 100,50 Euro"
  [x] Get in sub unit with data set "#0 Data Set: 10.00€ should return 1000 (ct)"
  [x] Get in sub unit with data set "#1 Data Set: 5.50€ should return 550 (ct)"
- [x] Get main unit string no symbol with data set "#0 Data Set: 10 should return 10,00 €"
- [x] Get main unit string no symbol with data set "#1 Data Set: 1000 should return 1.000,00 €"
- [x] Get main unit string no symbol with data set "#2 Data Set: 0.50 should return 0,50 €"
- [x] Get main unit string no symbol with data set "#3 Data Set: 100.50 should return 100,50 €"
  [x] Get sub unit string with data set "#0 Data Set: 5.10€ should return 510 ct"
  [x] Get sub unit string with data set "#1 Data Set: 1000€ should return 100000 ct"
  [x] Get sub unit string with data set "#2 Data Set: 0.50€ should return 50 ct"
- [x] Get sub unit string no symbol with data set "#0 Data Set: 5.10€ should return 510 ct"
- [x] Get sub unit string no symbol with data set "#1 Data Set: 1000€ should return 100000 ct"
- [x] Get sub unit string no symbol with data set "#2 Data Set: 0.50€ should return 50 ct"
+ [x] Get sub unit string no symbol with data set "#0 Data Set: 5.10€ should return 510 Cent"
+ [x] Get sub unit string no symbol with data set "#1 Data Set: 1000€ should return 100000 Cent"
+ [x] Get sub unit string no symbol with data set "#2 Data Set: 0.50€ should return 50 Cent"
 
 Discount (domipoppe\sharkpay\Tests\Discount)
  [x] Get discount with data set "#0 Data Set: 10€ Netto, 10% Discount | Expect 1.00€ Discount Value"
  [x] Get discount with data set "#1 Data Set: 4210€ Netto, 105% Discount | Expect 1.00€ Discount Value"
  [x] Get discount with data set "#2 Data Set: 10€ Netto, 5€ Discount | Expect 5.00€ Discount Value"
+ [x] Get discount with data set "#3 Data Set: 10€ Netto, 5€ Discount | Invalid Discount Type | Expect exception"
+
+Created At (domipoppe\sharkpay\Tests\Invoice\CreatedAt)
+ [x] Get created at by date time
+ [x] Get created at in days
+ [x] Get created at now
+ [x] Get created before in days
+ [x] Get created at german format
+ [x] Get created at international format
+ [x] Get created at day year and month
+
+Invoice (domipoppe\sharkpay\Tests\Invoice\Invoice)
+ [x] Generate invoice
 
 Position (domipoppe\sharkpay\Tests\Position)
- [x] Position with data set "#0 Data Set: 10€ Netto, 2 Quantity"
  [x] Position with data set "#1 Data Set: 1312.51€ Netto, 4.5 Quantity"
+ [x] Position with data set "#0 Data Set: 10€ Netto, 2 Quantity"
 
 Price (domipoppe\sharkpay\Tests\Price)
+ [x] Prices with data set "#2 Data Set: 2.10€ Netto - 2.50€ Brutto - 0.40€ Tax"
+ [x] Prices with data set "#1 Data Set: 9.34€ Netto - 11.11€ Brutto - 1.77€ Tax"
  [x] Prices with data set "#0 Data Set: 10€ Netto - 11.90€ Brutto - 1.90€ Tax"
- [x] Prices with data set "#1 Data Set: 9.34€ Netto - 11.1146€ Brutto - 1.7746€ Tax"
- [x] Prices with data set "#2 Data Set: 2.10€ Netto - 2.499€ Brutto - 0.399€ Tax"
 
 Tax (domipoppe\sharkpay\Tests\Tax)
  [x] Get tax from amount with data set "#0 Data Set: When 2,00 € we expect 0,38 € tax (19%)"
- [x] Get tax from amount with data set "#1 Data Set: When 0,15 € we expect 0,0285 € tax (19%)"
+ [x] Get tax from amount with data set "#1 Data Set: When 0,15 € we expect 0,03 € tax (19%)"
 

@@ -13,13 +13,15 @@ class Position
 {
     private Price $price;
     private float $quantity;
+    private ?int $number = null;
+    private string $unit = 'piece';
     private string $identifier = '';
     private string $name = '';
     private string $description = '';
     private array $data = [];
 
     /**
-     * @param Price $price the price of this position
+     * @param Price $price    the price of this position
      * @param float $quantity the quantity of this position (default: 1)
      */
     public function __construct(Price $price, float $quantity = 1.00)
@@ -29,33 +31,33 @@ class Position
     }
 
     /**
-     * Will return the total brutto of this position
+     * Will return the total brutto of this position (single price * quantity)
      *
      * @return float
      */
     public function getTotalBrutto(): float
     {
-        return round($this->getPrice()->getBrutto() * $this->getQuantity(), Price::CALCULATION_PRECISION);
+        return round($this->getSinglePrice()->getBrutto() * $this->getQuantity(), Price::CALCULATION_PRECISION);
     }
 
     /**
-     * Will return the total brutto of this position
+     * Will return the total brutto of this position (single price * quantity)
      *
      * @return float
      */
     public function getTotalNetto(): float
     {
-        return round($this->getPrice()->getNetto() * $this->getQuantity(), Price::CALCULATION_PRECISION);
+        return round($this->getSinglePrice()->getNetto() * $this->getQuantity(), Price::CALCULATION_PRECISION);
     }
 
     /**
-     * Will return the total tax of this position
+     * Will return the total tax of this position (single price * quantity)
      *
      * @return float
      */
     public function getTotalTax(): float
     {
-        return round($this->getPrice()->getTaxAmount() * $this->getQuantity(), Price::CALCULATION_PRECISION);
+        return round($this->getSinglePrice()->getTaxAmount() * $this->getQuantity(), Price::CALCULATION_PRECISION);
     }
 
     /**
@@ -63,13 +65,15 @@ class Position
      */
     public function getTaxRate(): float
     {
-        return $this->getPrice()->getTax()->getRate();
+        return $this->getSinglePrice()->getTax()->getRate();
     }
 
     /**
+     * Will return the single price (basically the price you have initiated the object with, the totals are single price * quantity)
+     *
      * @return Price
      */
-    public function getPrice(): Price
+    public function getSinglePrice(): Price
     {
         return $this->price;
     }
@@ -84,6 +88,7 @@ class Position
 
     /**
      * @param float $quantity
+     *
      * @return Position
      */
     public function setQuantity(float $quantity): self
@@ -102,6 +107,7 @@ class Position
 
     /**
      * @param string $identifier
+     *
      * @return Position
      */
     public function setIdentifier(string $identifier): self
@@ -120,6 +126,7 @@ class Position
 
     /**
      * @param string $name
+     *
      * @return Position
      */
     public function setName(string $name): self
@@ -138,6 +145,7 @@ class Position
 
     /**
      * @param string $description
+     *
      * @return Position
      */
     public function setDescription(string $description): self
@@ -156,11 +164,46 @@ class Position
 
     /**
      * @param array $data
+     *
      * @return Position
      */
     public function setData(array $data): self
     {
         $this->data = $data;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUnit(): string
+    {
+        return $this->unit;
+    }
+
+    /**
+     * @param string $unit
+     */
+    public function setUnit(string $unit): void
+    {
+        $this->unit = $unit;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNumber(): ?int
+    {
+        return $this->number;
+    }
+
+    /**
+     * The number should not be set manually, the logic will do it automatically when generating the invoice
+     *
+     * @param int $number
+     */
+    public function setNumber(int $number): void
+    {
+        $this->number = $number;
     }
 }

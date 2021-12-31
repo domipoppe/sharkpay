@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace domipoppe\sharkpay\Tests;
 
-use domipoppe\sharkpay\Tax;
+use domipoppe\sharkpay\Tax\Tax;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class TaxTest
+ *
  * @package domipoppe\sharkpay\Tests
  */
 class TaxTest extends TestCase
@@ -19,7 +20,7 @@ class TaxTest extends TestCase
      * @param float $amount
      * @param float $expected
      *
-     * @covers \domipoppe\sharkpay\Tax::getTaxFromAmount
+     * @covers       \domipoppe\sharkpay\Tax\Tax::getTaxFromAmount
      */
     public function testGetTaxFromAmount(float $amount, float $expected): void
     {
@@ -37,9 +38,9 @@ class TaxTest extends TestCase
                 2.00,
                 0.38
             ],
-            '#1 Data Set: When 0,15 € we expect 0,0285 € tax (19%)' => [
+            '#1 Data Set: When 0,15 € we expect 0,03 € tax (19%)' => [
                 0.15,
-                0.0285
+                0.03
             ],
         ];
     }

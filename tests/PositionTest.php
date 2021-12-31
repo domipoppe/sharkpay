@@ -7,7 +7,7 @@ namespace domipoppe\sharkpay\Tests;
 use domipoppe\sharkpay\Currency\EUR;
 use domipoppe\sharkpay\Position;
 use domipoppe\sharkpay\Price;
-use domipoppe\sharkpay\Tax;
+use domipoppe\sharkpay\Tax\Tax;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -27,17 +27,24 @@ class PositionTest extends TestCase
      * @param float $totalNettoAmount
      * @param float $totalTaxAmount
      *
-     * @covers \domipoppe\sharkpay\Position
+     * @covers       \domipoppe\sharkpay\Position
      */
-    public function testPosition(float $nettoAmount, float $quantity, float $bruttoAmount, float $totalAmount, float $totalNettoAmount, float $totalTaxAmount): void
-    {
+    public function testPosition(
+        float $nettoAmount,
+        float $quantity,
+        float $bruttoAmount,
+        float $totalAmount,
+        float $totalNettoAmount,
+        float $totalTaxAmount
+    ): void {
         $price = new Price($nettoAmount, new EUR(), new Tax());
         $position = new Position($price, $quantity);
         $position->setName('Test Position')->setIdentifier('test');
 
         $this->assertEquals($quantity, $position->getQuantity());
-        $this->assertEquals($nettoAmount, $position->getPrice()->getNetto());
-        $this->assertEquals($bruttoAmount, $position->getPrice()->getBrutto());
+        $this->assertEquals('piece', $position->getUnit());
+        $this->assertEquals($nettoAmount, $position->getSinglePrice()->getNetto());
+        $this->assertEquals($bruttoAmount, $position->getSinglePrice()->getBrutto());
         $this->assertEquals($totalAmount, $position->getTotalBrutto());
         $this->assertEquals($totalNettoAmount, $position->getTotalNetto());
         $this->assertEquals($totalTaxAmount, $position->getTotalTax());
@@ -60,10 +67,10 @@ class PositionTest extends TestCase
             '#1 Data Set: 1312.51€ Netto, 4.5 Quantity' => [
                 1312.51,
                 4.5,
-                1561.8869,
-                7028.4911,
-                5906.295,
-                1122.1961
+                1561.89,
+                7028.51,
+                5906.30,
+                1122.21
             ]
         ];
     }

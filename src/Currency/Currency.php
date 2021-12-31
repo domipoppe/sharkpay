@@ -15,7 +15,7 @@ use domipoppe\sharkpay\Price;
  *
  * @package domipoppe\sharkpay\Currencies
  */
-abstract class Currency
+class Currency
 {
     private string $thousandsSeparator;
     private string $decimalSeparator;
@@ -34,7 +34,7 @@ abstract class Currency
      * @param string $mainUnitSymbol
      * @param string $subUnit
      * @param string $subUnitSymbol
-     * @param int $subUnitDivider
+     * @param int    $subUnitDivider
      */
     public function __construct(
         string $thousandsSeparator,
@@ -44,8 +44,8 @@ abstract class Currency
         string $mainUnitSymbol,
         string $subUnit,
         string $subUnitSymbol,
-        int    $subUnitDivider)
-    {
+        int $subUnitDivider
+    ) {
         $this->thousandsSeparator = $thousandsSeparator;
         $this->decimalSeparator = $decimalSeparator;
         $this->isoCode = $isoCode;
@@ -60,8 +60,9 @@ abstract class Currency
      * Formatter for displaying an amount in the currencies main unit
      *
      * @param float $amount
-     * @param int $displayPrecision
-     * @param bool $symbol
+     * @param int   $displayPrecision
+     * @param bool  $symbol
+     *
      * @return string
      */
     public function getMainUnitString(float $amount, int $displayPrecision = 2, bool $symbol = true): string
@@ -74,6 +75,7 @@ abstract class Currency
      * Formatter to get the currency in it's sub-unit
      *
      * @param float $amount
+     *
      * @return float
      */
     public function getInSubUnit(float $amount): float
@@ -85,13 +87,19 @@ abstract class Currency
      * Formatter for displaying an amount in the currencies sub-unit
      *
      * @param float $amount
-     * @param int $displayPrecision
-     * @param bool $symbol
+     * @param int   $displayPrecision
+     * @param bool  $symbol
+     *
      * @return string
      */
     public function getSubUnitString(float $amount, int $displayPrecision = 2, bool $symbol = true): string
     {
-        $formattedValue = number_format($this->getInSubUnit($amount), $displayPrecision, $this->decimalSeparator, $this->thousandsSeparator);
+        $formattedValue = number_format(
+            $this->getInSubUnit($amount),
+            $displayPrecision,
+            $this->decimalSeparator,
+            $this->thousandsSeparator
+        );
         return sprintf('%s %s', $formattedValue, $symbol ? $this->subUnitSymbol : $this->subUnit);
     }
 

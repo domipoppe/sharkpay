@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace domipoppe\sharkpay;
+namespace domipoppe\sharkpay\Tax;
+
+use domipoppe\sharkpay\Price;
 
 /**
  * Class Tax
@@ -19,7 +21,7 @@ class Tax
 
     /**
      * @param string $key
-     * @param float $rate
+     * @param float  $rate
      * @param string $description
      */
     public function __construct(string $key = 'DE19', float $rate = 19, string $description = 'VAT 19%')
@@ -35,6 +37,7 @@ class Tax
      * Example Return: 0.38 if you give amount 2.00 (0.38 € tax when 2.00 € netto given)
      *
      * @param float $amount
+     *
      * @return float
      */
     public function getTaxFromAmount(float $amount): float
@@ -63,7 +66,7 @@ class Tax
     }
 
     /**
-     * @return float|int
+     * @return float
      */
     public function getRate(): float
     {

@@ -6,7 +6,7 @@ namespace domipoppe\sharkpay\Tests;
 
 use domipoppe\sharkpay\Currency\EUR;
 use domipoppe\sharkpay\Price;
-use domipoppe\sharkpay\Tax;
+use domipoppe\sharkpay\Tax\Tax;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -19,32 +19,31 @@ class PriceTest extends TestCase
     /**
      * @dataProvider dataProviderPrices
      *
-     * @param float $netto
-     * @param float $expectedBrutto
-     * @param float $expectedNetto
-     * @param float $expectedTax
-     * @param float $expectedNettoSubUnit
-     * @param float $expectedBruttoSubUnit
+     * @param float  $netto
+     * @param float  $expectedBrutto
+     * @param float  $expectedNetto
+     * @param float  $expectedTax
+     * @param float  $expectedNettoSubUnit
+     * @param float  $expectedBruttoSubUnit
      * @param string $expectedNettoString
      * @param string $expectedBruttoString
      * @param string $expectedSubUnitBruttoString
      * @param string $expectedHighPrecisionBruttoString
      *
-     * @covers \domipoppe\sharkpay\Price
+     * @covers       \domipoppe\sharkpay\Price
      */
     public function testPrices(
-        float  $netto,
-        float  $expectedBrutto,
-        float  $expectedNetto,
-        float  $expectedTax,
-        float  $expectedNettoSubUnit,
-        float  $expectedBruttoSubUnit,
+        float $netto,
+        float $expectedBrutto,
+        float $expectedNetto,
+        float $expectedTax,
+        float $expectedNettoSubUnit,
+        float $expectedBruttoSubUnit,
         string $expectedNettoString,
         string $expectedBruttoString,
         string $expectedSubUnitBruttoString,
         string $expectedHighPrecisionBruttoString
-    ): void
-    {
+    ): void {
         $price = new Price($netto, new EUR(), new Tax());
 
         $this->assertEquals($expectedBrutto, $price->getBrutto());
@@ -76,29 +75,29 @@ class PriceTest extends TestCase
                 '1.190,00 ct',
                 '11,9000 €'
             ],
-            '#1 Data Set: 9.34€ Netto - 11.1146€ Brutto - 1.7746€ Tax' => [
+            '#1 Data Set: 9.34€ Netto - 11.11€ Brutto - 1.77€ Tax' => [
                 9.34,
-                11.1146,
+                11.11,
                 9.34,
-                1.7746,
+                1.77,
                 934,
-                1111.46,
+                1111,
                 '9,34 €',
                 '11,11 €',
-                '1.111,46 ct',
-                '11,1146 €'
+                '1.111,00 ct',
+                '11,1100 €'
             ],
-            '#2 Data Set: 2.10€ Netto - 2.499€ Brutto - 0.399€ Tax' => [
+            '#2 Data Set: 2.10€ Netto - 2.50€ Brutto - 0.40€ Tax' => [
                 2.10,
-                2.499,
+                2.50,
                 2.10,
-                0.399,
+                0.40,
                 210,
-                249.9,
+                250,
                 '2,10 €',
                 '2,50 €',
-                '249,90 ct',
-                '2,4990 €'
+                '250,00 ct',
+                '2,5000 €'
             ]
         ];
     }

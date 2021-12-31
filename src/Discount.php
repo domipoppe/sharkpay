@@ -22,7 +22,7 @@ class Discount
 
     /**
      * @param string $type
-     * @param float $value
+     * @param float  $value
      * @param string $description
      */
     public function __construct(string $type, float $value, string $description)
@@ -36,6 +36,7 @@ class Discount
      * Will return the discount amount for the given netto amount based upon the discounts type
      *
      * @param float $netto
+     *
      * @return float
      * @throws UnknownDiscountTypeException
      */

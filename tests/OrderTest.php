@@ -7,11 +7,12 @@ namespace domipoppe\sharkpay\Tests;
 use domipoppe\sharkpay\Currency\EUR;
 use domipoppe\sharkpay\Currency\USD;
 use domipoppe\sharkpay\Exception\MixedCurrenciesException;
+use domipoppe\sharkpay\Exception\TaxKeyMixedRatesException;
 use domipoppe\sharkpay\Order;
 use domipoppe\sharkpay\Discount;
 use domipoppe\sharkpay\Position;
 use domipoppe\sharkpay\Price;
-use domipoppe\sharkpay\Tax;
+use domipoppe\sharkpay\Tax\Tax;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,6 +48,27 @@ class OrderTest extends TestCase
     }
 
     /**
+     * @covers \domipoppe\sharkpay\Order::getTotal
+     */
+    public function testOrderTaxKeyMixedRatesException(): void
+    {
+        $this->expectException(TaxKeyMixedRatesException::class);
+
+        $order = new Order();
+
+        $price1 = new Price(10.50, new EUR(), new Tax('DE19', 19, 'Deutsche Umsatzsteuer'));
+        $position1 = new Position($price1, 5);
+
+        $price2 = new Price(5, new EUR(), new Tax('DE19', 16, 'Deutsche Steuer reduziert'));
+        $position2 = new Position($price2, 1);
+
+        $order->addPosition($position1);
+        $order->addPosition($position2);
+
+        $total = $order->getTotal();
+    }
+
+    /**
      * @throws \Exception
      *
      * @covers \domipoppe\sharkpay\Order::getTotal
@@ -72,11 +94,11 @@ class OrderTest extends TestCase
 
         $this->assertCount(1, $total->getTaxPositions());
         $this->assertNotEmpty($total->getTaxPositions()['DE19']);
-        $this->assertEquals(14.725, $total->getTaxPositions()['DE19']['amount']);
+        $this->assertEquals(14.75, $total->getTaxPositions()['DE19']->getAmount());
         $this->assertEquals(77.50, $total->getNetto());
-        $this->assertEquals(14.725, $total->getTax());
-        $this->assertEquals(92.225, $total->getBrutto());
-        $this->assertEquals('92,23 €', $total->getBruttoAsString());
+        $this->assertEquals(14.75, $total->getTax());
+        $this->assertEquals(92.25, $total->getBrutto());
+        $this->assertEquals('92,25 €', $total->getBruttoAsString());
     }
 
     /**
@@ -106,12 +128,12 @@ class OrderTest extends TestCase
         $this->assertCount(2, $total->getTaxPositions());
         $this->assertNotEmpty($total->getTaxPositions()['DE19']);
         $this->assertNotEmpty($total->getTaxPositions()['USA10']);
-        $this->assertEquals(10.925, $total->getTaxPositions()['DE19']['amount']);
-        $this->assertEquals(2.00, $total->getTaxPositions()['USA10']['amount']);
+        $this->assertEquals(10.95, $total->getTaxPositions()['DE19']->getAmount());
+        $this->assertEquals(2.00, $total->getTaxPositions()['USA10']->getAmount());
         $this->assertEquals(77.50, $total->getNetto());
-        $this->assertEquals(12.925, $total->getTax());
-        $this->assertEquals(90.425, $total->getBrutto());
-        $this->assertEquals('90,43 €', $total->getBruttoAsString());
+        $this->assertEquals(12.95, $total->getTax());
+        $this->assertEquals(90.45, $total->getBrutto());
+        $this->assertEquals('90,45 €', $total->getBruttoAsString());
     }
 
     /**
@@ -143,11 +165,11 @@ class OrderTest extends TestCase
 
         $this->assertCount(2, $total->getTaxPositions());
         $this->assertNotEmpty($total->getTaxPositions()['DE19']);
-        $this->assertEquals(14.725, $total->getTaxPositions()['DE19']['amount']);
+        $this->assertEquals(14.75, $total->getTaxPositions()['DE19']->getAmount());
         $this->assertEquals(75.50, $total->getNetto());
-        $this->assertEquals(14.345, $total->getTax());
-        $this->assertEquals(89.845, $total->getBrutto());
-        $this->assertEquals('89,85 €', $total->getBruttoAsString());
+        $this->assertEquals(14.37, $total->getTax());
+        $this->assertEquals(89.87, $total->getBrutto());
+        $this->assertEquals('89,87 €', $total->getBruttoAsString());
     }
 
     /**
@@ -179,11 +201,11 @@ class OrderTest extends TestCase
 
         $this->assertCount(3, $total->getTaxPositions());
         $this->assertNotEmpty($total->getTaxPositions()['DE19']);
-        $this->assertEquals(13.775, $total->getTaxPositions()['DE19']['amount']);
+        $this->assertEquals(13.80, $total->getTaxPositions()['DE19']->getAmount());
         $this->assertEquals(75.50, $total->getNetto());
-        $this->assertEquals(13.955, $total->getTax());
-        $this->assertEquals(89.455, $total->getBrutto());
-        $this->assertEquals('89,46 €', $total->getBruttoAsString());
+        $this->assertEquals(13.98, $total->getTax());
+        $this->assertEquals(89.48, $total->getBrutto());
+        $this->assertEquals('89,48 €', $total->getBruttoAsString());
     }
 
     /**
@@ -215,13 +237,25 @@ class OrderTest extends TestCase
 
         $total = $order->getTotal();
 
+        $totalBrutto = 0;
+        foreach ($order->getPositions() as $curPosition) {
+            $totalBrutto += $curPosition->getTotalBrutto();
+        }
+        $this->assertEquals($totalBrutto, $total->getBrutto());
+
         $this->assertCount(3, $total->getTaxPositions());
         $this->assertNotEmpty($total->getTaxPositions()['DE19']);
-        $this->assertEquals(13.775, $total->getTaxPositions()['DE19']['amount']);
-        $this->assertEquals(71.725, $total->getNetto());
-        $this->assertEquals(13.351, $total->getTax());
-        $this->assertEquals(85.076, $total->getBrutto());
-        $this->assertEquals('85,08 €', $total->getBruttoAsString());
+        $this->assertEquals(13.80, $total->getTaxPositions()['DE19']->getAmount());
+        $this->assertEquals(0.50, $total->getTaxPositions()['USA10']->getAmount());
+        $this->assertEquals(
+            -0.92,
+            $total->getTaxPositions()['NONE']->getAmount()
+        ); //Tax correction position due to discounts
+        $this->assertEquals(-0.92, $order->getPositions()[3]->getTotalTax());
+        $this->assertEquals(71.72, $total->getNetto());
+        $this->assertEquals(13.38, $total->getTax());
+        $this->assertEquals(85.10, $total->getBrutto());
+        $this->assertEquals('85,10 €', $total->getBruttoAsString());
     }
 
     /**
@@ -255,10 +289,10 @@ class OrderTest extends TestCase
 
         $this->assertCount(2, $total->getTaxPositions());
         $this->assertNotEmpty($total->getTaxPositions()['DE19']);
-        $this->assertEquals(14.725, $total->getTaxPositions()['DE19']['amount']);
+        $this->assertEquals(14.75, $total->getTaxPositions()['DE19']->getAmount());
         $this->assertEquals(67.95, $total->getNetto());
-        $this->assertEquals(12.9105, $total->getTax());
-        $this->assertEquals(80.8605, $total->getBrutto());
-        $this->assertEquals('80,86 €', $total->getBruttoAsString());
+        $this->assertEquals(12.94, $total->getTax());
+        $this->assertEquals(80.89, $total->getBrutto());
+        $this->assertEquals('80,89 €', $total->getBruttoAsString());
     }
 }

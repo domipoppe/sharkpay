@@ -1,43 +1,53 @@
 {
-    "name": "domipoppe/sharkpay",
-    "description": "sharkpay is a system to provide a full order/payment eco-system for your project.",
-    "keywords": ["sharkpay", "domipoppe", "order", "payment", "eco system", "currency", "invoice", "invoicing"],
-    "type": "library",
-    "require": {
-        "php": ">=7.4"
-    },
-    "require-dev": {
-        "phpstan/phpstan": "^1.3",
-        "phpunit/phpunit": "^9.5",
-        "vimeo/psalm": "^4.16"
-    },
-    "license": "Creative Commons Attribution 4.0 International",
-    "authors": [
-        {
-            "name": "Dominic Poppe",
-            "email": "d.poppe@idiox.io",
-            "role": "lead"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "domipoppe\\sharkpay\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "domipoppe\\sharkpay\\Tests\\": "tests/"
-        }
-    },
-    "minimum-stability": "stable",
-    "config": {
-        "optimize-autoloader": true,
-        "sort-packages": true,
-        "preferred-install": "dist"
-    },
-    "scripts": {
-        "psalm": "./vendor/bin/psalm --show-info=true",
-        "phpstan": "./vendor/bin/phpstan analyse src tests",
-        "test": "./vendor/bin/phpunit"
+  "name": "domipoppe/sharkpay",
+  "description": "sharkpay is a system to provide a full order/payment eco-system for your project.",
+  "keywords": [
+    "sharkpay",
+    "domipoppe",
+    "order",
+    "payment",
+    "eco system",
+    "currency",
+    "invoice",
+    "invoicing"
+  ],
+  "type": "library",
+  "require": {
+    "php": ">=7.4",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.3",
+    "phpunit/phpunit": "^9.5",
+    "vimeo/psalm": "^4.16"
+  },
+  "license": "CC-BY-4.0",
+  "authors": [
+    {
+      "name": "Dominic Poppe",
+      "email": "d.poppe@idiox.io",
+      "role": "lead"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "domipoppe\\sharkpay\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "domipoppe\\sharkpay\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "stable",
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "preferred-install": "dist"
+  },
+  "scripts": {
+    "psalm": "./vendor/bin/psalm --show-info=true",
+    "phpstan": "./vendor/bin/phpstan analyse src tests",
+    "test": "./vendor/bin/phpunit"
+  }
 }

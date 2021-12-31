@@ -11,17 +11,18 @@ namespace domipoppe\sharkpay;
  */
 class Price
 {
-    public const CALCULATION_PRECISION = 4;
+    public const CALCULATION_PRECISION = 2;
+
     private float $netto;
     private Currency\Currency $currency;
-    private Tax $tax;
+    private Tax\Tax $tax;
 
     /**
-     * @param float $netto
+     * @param float             $netto
      * @param Currency\Currency $currency
-     * @param Tax $tax
+     * @param Tax\Tax           $tax
      */
-    public function __construct(float $netto, Currency\Currency $currency, Tax $tax)
+    public function __construct(float $netto, Currency\Currency $currency, Tax\Tax $tax)
     {
         $this->netto = $netto;
         $this->currency = $currency;
@@ -30,6 +31,7 @@ class Price
 
     /**
      * @param float $netto
+     *
      * @return $this
      */
     public function setNetto(float $netto): self
@@ -64,8 +66,9 @@ class Price
     }
 
     /**
-     * @param int $displayPrecision
+     * @param int  $displayPrecision
      * @param bool $symbol
+     *
      * @return string
      */
     public function getNettoAsString(int $displayPrecision = 2, bool $symbol = true): string
@@ -74,8 +77,9 @@ class Price
     }
 
     /**
-     * @param int $displayPrecision
+     * @param int  $displayPrecision
      * @param bool $symbol
+     *
      * @return string
      */
     public function getNettoAsSubUnitString(int $displayPrecision = 2, bool $symbol = true): string
@@ -92,8 +96,9 @@ class Price
     }
 
     /**
-     * @param int $displayPrecision
+     * @param int  $displayPrecision
      * @param bool $symbol
+     *
      * @return string
      */
     public function getTaxAsString(int $displayPrecision = 2, bool $symbol = true): string
@@ -102,8 +107,9 @@ class Price
     }
 
     /**
-     * @param int $displayPrecision
+     * @param int  $displayPrecision
      * @param bool $symbol
+     *
      * @return string
      */
     public function getTaxAsSubUnitString(int $displayPrecision = 2, bool $symbol = true): string
@@ -112,8 +118,9 @@ class Price
     }
 
     /**
-     * @param int $displayPrecision
+     * @param int  $displayPrecision
      * @param bool $symbol
+     *
      * @return string
      */
     public function getBruttoAsString(int $displayPrecision = 2, bool $symbol = true): string
@@ -122,8 +129,9 @@ class Price
     }
 
     /**
-     * @param int $displayPrecision
+     * @param int  $displayPrecision
      * @param bool $symbol
+     *
      * @return string
      */
     public function getBruttoAsSubUnitString(int $displayPrecision = 2, bool $symbol = true): string
@@ -156,9 +164,9 @@ class Price
     }
 
     /**
-     * @return Tax
+     * @return Tax\Tax
      */
-    public function getTax(): Tax
+    public function getTax(): Tax\Tax
     {
         return $this->tax;
     }

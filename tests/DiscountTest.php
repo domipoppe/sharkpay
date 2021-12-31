@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace domipoppe\sharkpay\Tests;
 
 use domipoppe\sharkpay\Discount;
+use domipoppe\sharkpay\Exception\UnknownDiscountTypeException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,17 +18,24 @@ class DiscountTest extends TestCase
     /**
      * @dataProvider dataProviderGetDiscount
      *
-     * @param int $nettoAmount
-     * @param float $discountValue
+     * @param int    $nettoAmount
+     * @param float  $discountValue
      * @param string $discountType
-     * @param float $expectedDiscount
-     * @throws \Exception
+     * @param float  $expectedDiscount
      *
-     * @covers \domipoppe\sharkpay\Discount::getDiscount
+     * @covers       \domipoppe\sharkpay\Discount::getDiscount
      */
-    public function testGetDiscount(int $nettoAmount, float $discountValue, string $discountType, float $expectedDiscount): void
-    {
+    public function testGetDiscount(
+        int $nettoAmount,
+        float $discountValue,
+        string $discountType,
+        float $expectedDiscount
+    ): void {
         $discount = new Discount($discountType, $discountValue, 'Test');
+
+        if ($discountType === 'exception') {
+            $this->expectException(UnknownDiscountTypeException::class);
+        }
 
         $this->assertEquals($expectedDiscount, $discount->getDiscount($nettoAmount));
     }
@@ -54,6 +62,12 @@ class DiscountTest extends TestCase
                 10,
                 5,
                 Discount::DISCOUNT_TYPE_AMOUNT,
+                5.00
+            ],
+            '#3 Data Set: 10€ Netto, 5€ Discount | Invalid Discount Type | Expect exception' => [
+                10,
+                5,
+                'exception',
                 5.00
             ],
         ];
