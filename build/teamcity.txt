@@ -1,0 +1,198 @@
+
+##teamcity[testCount count='33' flowId='27528']
+
+##teamcity[testSuiteStarted name='sharkpay Test Suite' flowId='27528']
+
+##teamcity[testSuiteStarted name='domipoppe\sharkpay\Tests\OrderTest' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\OrderTest.php::\domipoppe\sharkpay\Tests\OrderTest' flowId='27528']
+
+##teamcity[testStarted name='testOrderMixedCurrenciesException' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\OrderTest.php::\domipoppe\sharkpay\Tests\OrderTest::testOrderMixedCurrenciesException' flowId='27528']
+
+##teamcity[testFinished name='testOrderMixedCurrenciesException' duration='5' flowId='27528']
+
+##teamcity[testStarted name='testCartNoDiscountsSameTax' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\OrderTest.php::\domipoppe\sharkpay\Tests\OrderTest::testCartNoDiscountsSameTax' flowId='27528']
+
+##teamcity[testFinished name='testCartNoDiscountsSameTax' duration='1' flowId='27528']
+
+##teamcity[testStarted name='testCartDiscountAmountSameTax' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\OrderTest.php::\domipoppe\sharkpay\Tests\OrderTest::testCartDiscountAmountSameTax' flowId='27528']
+
+##teamcity[testFinished name='testCartDiscountAmountSameTax' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testCartDiscountAmountMixedTax' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\OrderTest.php::\domipoppe\sharkpay\Tests\OrderTest::testCartDiscountAmountMixedTax' flowId='27528']
+
+##teamcity[testFinished name='testCartDiscountAmountMixedTax' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testCartDiscountAmountAndPercentageMixedTax' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\OrderTest.php::\domipoppe\sharkpay\Tests\OrderTest::testCartDiscountAmountAndPercentageMixedTax' flowId='27528']
+
+##teamcity[testFinished name='testCartDiscountAmountAndPercentageMixedTax' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testCartDiscountAmountAndPercentageSameTax' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\OrderTest.php::\domipoppe\sharkpay\Tests\OrderTest::testCartDiscountAmountAndPercentageSameTax' flowId='27528']
+
+##teamcity[testFinished name='testCartDiscountAmountAndPercentageSameTax' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testCartNoDiscountsMixedTax' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\OrderTest.php::\domipoppe\sharkpay\Tests\OrderTest::testCartNoDiscountsMixedTax' flowId='27528']
+
+##teamcity[testFinished name='testCartNoDiscountsMixedTax' duration='0' flowId='27528']
+
+##teamcity[testSuiteFinished name='domipoppe\sharkpay\Tests\OrderTest' flowId='27528']
+
+##teamcity[testSuiteStarted name='domipoppe\sharkpay\Tests\CurrencyTest' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest' flowId='27528']
+
+##teamcity[testSuiteStarted name='testGetMainUnitString' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetMainUnitString' flowId='27528']
+
+##teamcity[testStarted name='testGetMainUnitString with data set "#0 Data Set: 10 should return 10,00 €"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetMainUnitString with data set "#0 Data Set: 10 should return 10,00 €"' flowId='27528']
+
+##teamcity[testFinished name='testGetMainUnitString with data set "#0 Data Set: 10 should return 10,00 €"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetMainUnitString with data set "#1 Data Set: 1000 should return 1.000,00 €"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetMainUnitString with data set "#1 Data Set: 1000 should return 1.000,00 €"' flowId='27528']
+
+##teamcity[testFinished name='testGetMainUnitString with data set "#1 Data Set: 1000 should return 1.000,00 €"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetMainUnitString with data set "#2 Data Set: 0.50 should return 0,50 €"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetMainUnitString with data set "#2 Data Set: 0.50 should return 0,50 €"' flowId='27528']
+
+##teamcity[testFinished name='testGetMainUnitString with data set "#2 Data Set: 0.50 should return 0,50 €"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetMainUnitString with data set "#3 Data Set: 100.50 should return 100,50 €"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetMainUnitString with data set "#3 Data Set: 100.50 should return 100,50 €"' flowId='27528']
+
+##teamcity[testFinished name='testGetMainUnitString with data set "#3 Data Set: 100.50 should return 100,50 €"' duration='0' flowId='27528']
+
+##teamcity[testSuiteFinished name='testGetMainUnitString' flowId='27528']
+
+##teamcity[testSuiteStarted name='testGetInSubUnit' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetInSubUnit' flowId='27528']
+
+##teamcity[testStarted name='testGetInSubUnit with data set "#0 Data Set: 10.00€ should return 1000 (ct)"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetInSubUnit with data set "#0 Data Set: 10.00€ should return 1000 (ct)"' flowId='27528']
+
+##teamcity[testFinished name='testGetInSubUnit with data set "#0 Data Set: 10.00€ should return 1000 (ct)"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetInSubUnit with data set "#1 Data Set: 5.50€ should return 550 (ct)"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetInSubUnit with data set "#1 Data Set: 5.50€ should return 550 (ct)"' flowId='27528']
+
+##teamcity[testFinished name='testGetInSubUnit with data set "#1 Data Set: 5.50€ should return 550 (ct)"' duration='0' flowId='27528']
+
+##teamcity[testSuiteFinished name='testGetInSubUnit' flowId='27528']
+
+##teamcity[testSuiteStarted name='testGetMainUnitStringNoSymbol' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetMainUnitStringNoSymbol' flowId='27528']
+
+##teamcity[testStarted name='testGetMainUnitStringNoSymbol with data set "#0 Data Set: 10 should return 10,00 €"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetMainUnitStringNoSymbol with data set "#0 Data Set: 10 should return 10,00 €"' flowId='27528']
+
+##teamcity[testFinished name='testGetMainUnitStringNoSymbol with data set "#0 Data Set: 10 should return 10,00 €"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetMainUnitStringNoSymbol with data set "#1 Data Set: 1000 should return 1.000,00 €"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetMainUnitStringNoSymbol with data set "#1 Data Set: 1000 should return 1.000,00 €"' flowId='27528']
+
+##teamcity[testFinished name='testGetMainUnitStringNoSymbol with data set "#1 Data Set: 1000 should return 1.000,00 €"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetMainUnitStringNoSymbol with data set "#2 Data Set: 0.50 should return 0,50 €"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetMainUnitStringNoSymbol with data set "#2 Data Set: 0.50 should return 0,50 €"' flowId='27528']
+
+##teamcity[testFinished name='testGetMainUnitStringNoSymbol with data set "#2 Data Set: 0.50 should return 0,50 €"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetMainUnitStringNoSymbol with data set "#3 Data Set: 100.50 should return 100,50 €"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetMainUnitStringNoSymbol with data set "#3 Data Set: 100.50 should return 100,50 €"' flowId='27528']
+
+##teamcity[testFinished name='testGetMainUnitStringNoSymbol with data set "#3 Data Set: 100.50 should return 100,50 €"' duration='0' flowId='27528']
+
+##teamcity[testSuiteFinished name='testGetMainUnitStringNoSymbol' flowId='27528']
+
+##teamcity[testSuiteStarted name='testGetSubUnitString' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetSubUnitString' flowId='27528']
+
+##teamcity[testStarted name='testGetSubUnitString with data set "#0 Data Set: 5.10€ should return 510 ct"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetSubUnitString with data set "#0 Data Set: 5.10€ should return 510 ct"' flowId='27528']
+
+##teamcity[testFinished name='testGetSubUnitString with data set "#0 Data Set: 5.10€ should return 510 ct"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetSubUnitString with data set "#1 Data Set: 1000€ should return 100000 ct"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetSubUnitString with data set "#1 Data Set: 1000€ should return 100000 ct"' flowId='27528']
+
+##teamcity[testFinished name='testGetSubUnitString with data set "#1 Data Set: 1000€ should return 100000 ct"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetSubUnitString with data set "#2 Data Set: 0.50€ should return 50 ct"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetSubUnitString with data set "#2 Data Set: 0.50€ should return 50 ct"' flowId='27528']
+
+##teamcity[testFinished name='testGetSubUnitString with data set "#2 Data Set: 0.50€ should return 50 ct"' duration='0' flowId='27528']
+
+##teamcity[testSuiteFinished name='testGetSubUnitString' flowId='27528']
+
+##teamcity[testSuiteStarted name='testGetSubUnitStringNoSymbol' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetSubUnitStringNoSymbol' flowId='27528']
+
+##teamcity[testStarted name='testGetSubUnitStringNoSymbol with data set "#0 Data Set: 5.10€ should return 510 ct"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetSubUnitStringNoSymbol with data set "#0 Data Set: 5.10€ should return 510 ct"' flowId='27528']
+
+##teamcity[testFinished name='testGetSubUnitStringNoSymbol with data set "#0 Data Set: 5.10€ should return 510 ct"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetSubUnitStringNoSymbol with data set "#1 Data Set: 1000€ should return 100000 ct"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetSubUnitStringNoSymbol with data set "#1 Data Set: 1000€ should return 100000 ct"' flowId='27528']
+
+##teamcity[testFinished name='testGetSubUnitStringNoSymbol with data set "#1 Data Set: 1000€ should return 100000 ct"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetSubUnitStringNoSymbol with data set "#2 Data Set: 0.50€ should return 50 ct"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\CurrencyTest.php::\domipoppe\sharkpay\Tests\CurrencyTest::testGetSubUnitStringNoSymbol with data set "#2 Data Set: 0.50€ should return 50 ct"' flowId='27528']
+
+##teamcity[testFinished name='testGetSubUnitStringNoSymbol with data set "#2 Data Set: 0.50€ should return 50 ct"' duration='0' flowId='27528']
+
+##teamcity[testSuiteFinished name='testGetSubUnitStringNoSymbol' flowId='27528']
+
+##teamcity[testSuiteFinished name='domipoppe\sharkpay\Tests\CurrencyTest' flowId='27528']
+
+##teamcity[testSuiteStarted name='domipoppe\sharkpay\Tests\DiscountTest' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\DiscountTest.php::\domipoppe\sharkpay\Tests\DiscountTest' flowId='27528']
+
+##teamcity[testSuiteStarted name='testGetDiscount' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\DiscountTest.php::\domipoppe\sharkpay\Tests\DiscountTest::testGetDiscount' flowId='27528']
+
+##teamcity[testStarted name='testGetDiscount with data set "#0 Data Set: 10€ Netto, 10% Discount || Expect 1.00€ Discount Value"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\DiscountTest.php::\domipoppe\sharkpay\Tests\DiscountTest::testGetDiscount with data set "#0 Data Set: 10€ Netto, 10% Discount || Expect 1.00€ Discount Value"' flowId='27528']
+
+##teamcity[testFinished name='testGetDiscount with data set "#0 Data Set: 10€ Netto, 10% Discount || Expect 1.00€ Discount Value"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetDiscount with data set "#1 Data Set: 4210€ Netto, 105% Discount || Expect 1.00€ Discount Value"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\DiscountTest.php::\domipoppe\sharkpay\Tests\DiscountTest::testGetDiscount with data set "#1 Data Set: 4210€ Netto, 105% Discount || Expect 1.00€ Discount Value"' flowId='27528']
+
+##teamcity[testFinished name='testGetDiscount with data set "#1 Data Set: 4210€ Netto, 105% Discount || Expect 1.00€ Discount Value"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetDiscount with data set "#2 Data Set: 10€ Netto, 5€ Discount || Expect 5.00€ Discount Value"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\DiscountTest.php::\domipoppe\sharkpay\Tests\DiscountTest::testGetDiscount with data set "#2 Data Set: 10€ Netto, 5€ Discount || Expect 5.00€ Discount Value"' flowId='27528']
+
+##teamcity[testFinished name='testGetDiscount with data set "#2 Data Set: 10€ Netto, 5€ Discount || Expect 5.00€ Discount Value"' duration='0' flowId='27528']
+
+##teamcity[testSuiteFinished name='testGetDiscount' flowId='27528']
+
+##teamcity[testSuiteFinished name='domipoppe\sharkpay\Tests\DiscountTest' flowId='27528']
+
+##teamcity[testSuiteStarted name='domipoppe\sharkpay\Tests\PositionTest' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\PositionTest.php::\domipoppe\sharkpay\Tests\PositionTest' flowId='27528']
+
+##teamcity[testSuiteStarted name='testPosition' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\PositionTest.php::\domipoppe\sharkpay\Tests\PositionTest::testPosition' flowId='27528']
+
+##teamcity[testStarted name='testPosition with data set "#0 Data Set: 10€ Netto, 2 Quantity"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\PositionTest.php::\domipoppe\sharkpay\Tests\PositionTest::testPosition with data set "#0 Data Set: 10€ Netto, 2 Quantity"' flowId='27528']
+
+##teamcity[testFinished name='testPosition with data set "#0 Data Set: 10€ Netto, 2 Quantity"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testPosition with data set "#1 Data Set: 1312.51€ Netto, 4.5 Quantity"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\PositionTest.php::\domipoppe\sharkpay\Tests\PositionTest::testPosition with data set "#1 Data Set: 1312.51€ Netto, 4.5 Quantity"' flowId='27528']
+
+##teamcity[testFinished name='testPosition with data set "#1 Data Set: 1312.51€ Netto, 4.5 Quantity"' duration='0' flowId='27528']
+
+##teamcity[testSuiteFinished name='testPosition' flowId='27528']
+
+##teamcity[testSuiteFinished name='domipoppe\sharkpay\Tests\PositionTest' flowId='27528']
+
+##teamcity[testSuiteStarted name='domipoppe\sharkpay\Tests\PriceTest' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\PriceTest.php::\domipoppe\sharkpay\Tests\PriceTest' flowId='27528']
+
+##teamcity[testSuiteStarted name='testPrices' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\PriceTest.php::\domipoppe\sharkpay\Tests\PriceTest::testPrices' flowId='27528']
+
+##teamcity[testStarted name='testPrices with data set "#0 Data Set: 10€ Netto - 11.90€ Brutto - 1.90€ Tax"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\PriceTest.php::\domipoppe\sharkpay\Tests\PriceTest::testPrices with data set "#0 Data Set: 10€ Netto - 11.90€ Brutto - 1.90€ Tax"' flowId='27528']
+
+##teamcity[testFinished name='testPrices with data set "#0 Data Set: 10€ Netto - 11.90€ Brutto - 1.90€ Tax"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testPrices with data set "#1 Data Set: 9.34€ Netto - 11.1146€ Brutto - 1.7746€ Tax"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\PriceTest.php::\domipoppe\sharkpay\Tests\PriceTest::testPrices with data set "#1 Data Set: 9.34€ Netto - 11.1146€ Brutto - 1.7746€ Tax"' flowId='27528']
+
+##teamcity[testFinished name='testPrices with data set "#1 Data Set: 9.34€ Netto - 11.1146€ Brutto - 1.7746€ Tax"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testPrices with data set "#2 Data Set: 2.10€ Netto - 2.499€ Brutto - 0.399€ Tax"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\PriceTest.php::\domipoppe\sharkpay\Tests\PriceTest::testPrices with data set "#2 Data Set: 2.10€ Netto - 2.499€ Brutto - 0.399€ Tax"' flowId='27528']
+
+##teamcity[testFinished name='testPrices with data set "#2 Data Set: 2.10€ Netto - 2.499€ Brutto - 0.399€ Tax"' duration='0' flowId='27528']
+
+##teamcity[testSuiteFinished name='testPrices' flowId='27528']
+
+##teamcity[testSuiteFinished name='domipoppe\sharkpay\Tests\PriceTest' flowId='27528']
+
+##teamcity[testSuiteStarted name='domipoppe\sharkpay\Tests\TaxTest' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\TaxTest.php::\domipoppe\sharkpay\Tests\TaxTest' flowId='27528']
+
+##teamcity[testSuiteStarted name='testGetTaxFromAmount' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\TaxTest.php::\domipoppe\sharkpay\Tests\TaxTest::testGetTaxFromAmount' flowId='27528']
+
+##teamcity[testStarted name='testGetTaxFromAmount with data set "#0 Data Set: When 2,00 € we expect 0,38 € tax (19%)"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\TaxTest.php::\domipoppe\sharkpay\Tests\TaxTest::testGetTaxFromAmount with data set "#0 Data Set: When 2,00 € we expect 0,38 € tax (19%)"' flowId='27528']
+
+##teamcity[testFinished name='testGetTaxFromAmount with data set "#0 Data Set: When 2,00 € we expect 0,38 € tax (19%)"' duration='0' flowId='27528']
+
+##teamcity[testStarted name='testGetTaxFromAmount with data set "#1 Data Set: When 0,15 € we expect 0,0285 € tax (19%)"' locationHint='php_qn://P:\Projekte\Software Dev\PHP\Composer\sharkpay\tests\TaxTest.php::\domipoppe\sharkpay\Tests\TaxTest::testGetTaxFromAmount with data set "#1 Data Set: When 0,15 € we expect 0,0285 € tax (19%)"' flowId='27528']
+
+##teamcity[testFinished name='testGetTaxFromAmount with data set "#1 Data Set: When 0,15 € we expect 0,0285 € tax (19%)"' duration='0' flowId='27528']
+
+##teamcity[testSuiteFinished name='testGetTaxFromAmount' flowId='27528']
+
+##teamcity[testSuiteFinished name='domipoppe\sharkpay\Tests\TaxTest' flowId='27528']
+
+##teamcity[testSuiteFinished name='sharkpay Test Suite' flowId='27528']

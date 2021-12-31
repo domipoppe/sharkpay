@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests>
+  <test className="domipoppe\sharkpay\Tests\OrderTest" methodName="testOrderMixedCurrenciesException" prettifiedClassName="Order (domipoppe\sharkpay\Tests\Order)" prettifiedMethodName="Order mixed currencies exception" status="0" time="0.0046327" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Order::getTotal"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\OrderTest" methodName="testCartNoDiscountsSameTax" prettifiedClassName="Order (domipoppe\sharkpay\Tests\Order)" prettifiedMethodName="Cart no discounts same tax" status="0" time="0.0013376" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Order::getTotal"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\OrderTest" methodName="testCartDiscountAmountSameTax" prettifiedClassName="Order (domipoppe\sharkpay\Tests\Order)" prettifiedMethodName="Cart discount amount same tax" status="0" time="0.0003253" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Order::getTotal"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\OrderTest" methodName="testCartDiscountAmountMixedTax" prettifiedClassName="Order (domipoppe\sharkpay\Tests\Order)" prettifiedMethodName="Cart discount amount mixed tax" status="0" time="0.0003399" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Order::getTotal"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\OrderTest" methodName="testCartDiscountAmountAndPercentageMixedTax" prettifiedClassName="Order (domipoppe\sharkpay\Tests\Order)" prettifiedMethodName="Cart discount amount and percentage mixed tax" status="0" time="0.0003307" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Order::getTotal"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\OrderTest" methodName="testCartDiscountAmountAndPercentageSameTax" prettifiedClassName="Order (domipoppe\sharkpay\Tests\Order)" prettifiedMethodName="Cart discount amount and percentage same tax" status="0" time="0.0003315" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Order::getTotal"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\OrderTest" methodName="testCartNoDiscountsMixedTax" prettifiedClassName="Order (domipoppe\sharkpay\Tests\Order)" prettifiedMethodName="Cart no discounts mixed tax" status="0" time="0.0002428" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Order::getTotal"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetMainUnitString with data set &quot;#0 Data Set: 10 should return 10,00 €&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get main unit string with data set &quot;#0 Data Set: 10 should return 10,00 €&quot;" status="0" time="9.96E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getMainUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetMainUnitString with data set &quot;#1 Data Set: 1000 should return 1.000,00 €&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get main unit string with data set &quot;#1 Data Set: 1000 should return 1.000,00 €&quot;" status="0" time="5.08E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getMainUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetMainUnitString with data set &quot;#2 Data Set: 0.50 should return 0,50 €&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get main unit string with data set &quot;#2 Data Set: 0.50 should return 0,50 €&quot;" status="0" time="5.72E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getMainUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetMainUnitString with data set &quot;#3 Data Set: 100.50 should return 100,50 €&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get main unit string with data set &quot;#3 Data Set: 100.50 should return 100,50 €&quot;" status="0" time="6.31E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getMainUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetInSubUnit with data set &quot;#0 Data Set: 10.00€ should return 1000 (ct)&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get in sub unit with data set &quot;#0 Data Set: 10.00€ should return 1000 (ct)&quot;" status="0" time="9.79E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getInSubUnit"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetInSubUnit with data set &quot;#1 Data Set: 5.50€ should return 550 (ct)&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get in sub unit with data set &quot;#1 Data Set: 5.50€ should return 550 (ct)&quot;" status="0" time="4.88E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getInSubUnit"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetMainUnitStringNoSymbol with data set &quot;#0 Data Set: 10 should return 10,00 €&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get main unit string no symbol with data set &quot;#0 Data Set: 10 should return 10,00 €&quot;" status="0" time="9.57E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getMainUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetMainUnitStringNoSymbol with data set &quot;#1 Data Set: 1000 should return 1.000,00 €&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get main unit string no symbol with data set &quot;#1 Data Set: 1000 should return 1.000,00 €&quot;" status="0" time="5.53E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getMainUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetMainUnitStringNoSymbol with data set &quot;#2 Data Set: 0.50 should return 0,50 €&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get main unit string no symbol with data set &quot;#2 Data Set: 0.50 should return 0,50 €&quot;" status="0" time="5.16E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getMainUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetMainUnitStringNoSymbol with data set &quot;#3 Data Set: 100.50 should return 100,50 €&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get main unit string no symbol with data set &quot;#3 Data Set: 100.50 should return 100,50 €&quot;" status="0" time="5.14E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getMainUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetSubUnitString with data set &quot;#0 Data Set: 5.10€ should return 510 ct&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get sub unit string with data set &quot;#0 Data Set: 5.10€ should return 510 ct&quot;" status="0" time="9.69E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getSubUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetSubUnitString with data set &quot;#1 Data Set: 1000€ should return 100000 ct&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get sub unit string with data set &quot;#1 Data Set: 1000€ should return 100000 ct&quot;" status="0" time="5.22E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getSubUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetSubUnitString with data set &quot;#2 Data Set: 0.50€ should return 50 ct&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get sub unit string with data set &quot;#2 Data Set: 0.50€ should return 50 ct&quot;" status="0" time="5.65E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getSubUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetSubUnitStringNoSymbol with data set &quot;#0 Data Set: 5.10€ should return 510 ct&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get sub unit string no symbol with data set &quot;#0 Data Set: 5.10€ should return 510 ct&quot;" status="0" time="0.0001231" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getSubUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetSubUnitStringNoSymbol with data set &quot;#1 Data Set: 1000€ should return 100000 ct&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get sub unit string no symbol with data set &quot;#1 Data Set: 1000€ should return 100000 ct&quot;" status="0" time="5.59E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getSubUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\CurrencyTest" methodName="testGetSubUnitStringNoSymbol with data set &quot;#2 Data Set: 0.50€ should return 50 ct&quot;" prettifiedClassName="Currency (domipoppe\sharkpay\Tests\Currency)" prettifiedMethodName="Get sub unit string no symbol with data set &quot;#2 Data Set: 0.50€ should return 50 ct&quot;" status="0" time="5.25E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Currency\Currency::getSubUnitString"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\DiscountTest" methodName="testGetDiscount with data set &quot;#0 Data Set: 10€ Netto, 10% Discount | Expect 1.00€ Discount Value&quot;" prettifiedClassName="Discount (domipoppe\sharkpay\Tests\Discount)" prettifiedMethodName="Get discount with data set &quot;#0 Data Set: 10€ Netto, 10% Discount | Expect 1.00€ Discount Value&quot;" status="0" time="0.0001043" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Discount::getDiscount"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\DiscountTest" methodName="testGetDiscount with data set &quot;#1 Data Set: 4210€ Netto, 105% Discount | Expect 1.00€ Discount Value&quot;" prettifiedClassName="Discount (domipoppe\sharkpay\Tests\Discount)" prettifiedMethodName="Get discount with data set &quot;#1 Data Set: 4210€ Netto, 105% Discount | Expect 1.00€ Discount Value&quot;" status="0" time="4.85E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Discount::getDiscount"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\DiscountTest" methodName="testGetDiscount with data set &quot;#2 Data Set: 10€ Netto, 5€ Discount | Expect 5.00€ Discount Value&quot;" prettifiedClassName="Discount (domipoppe\sharkpay\Tests\Discount)" prettifiedMethodName="Get discount with data set &quot;#2 Data Set: 10€ Netto, 5€ Discount | Expect 5.00€ Discount Value&quot;" status="0" time="4.85E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Discount::getDiscount"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\PositionTest" methodName="testPosition with data set &quot;#0 Data Set: 10€ Netto, 2 Quantity&quot;" prettifiedClassName="Position (domipoppe\sharkpay\Tests\Position)" prettifiedMethodName="Position with data set &quot;#0 Data Set: 10€ Netto, 2 Quantity&quot;" status="0" time="0.0001459" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Position"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\PositionTest" methodName="testPosition with data set &quot;#1 Data Set: 1312.51€ Netto, 4.5 Quantity&quot;" prettifiedClassName="Position (domipoppe\sharkpay\Tests\Position)" prettifiedMethodName="Position with data set &quot;#1 Data Set: 1312.51€ Netto, 4.5 Quantity&quot;" status="0" time="8.61E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Position"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\PriceTest" methodName="testPrices with data set &quot;#0 Data Set: 10€ Netto - 11.90€ Brutto - 1.90€ Tax&quot;" prettifiedClassName="Price (domipoppe\sharkpay\Tests\Price)" prettifiedMethodName="Prices with data set &quot;#0 Data Set: 10€ Netto - 11.90€ Brutto - 1.90€ Tax&quot;" status="0" time="0.0001874" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Price"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\PriceTest" methodName="testPrices with data set &quot;#1 Data Set: 9.34€ Netto - 11.1146€ Brutto - 1.7746€ Tax&quot;" prettifiedClassName="Price (domipoppe\sharkpay\Tests\Price)" prettifiedMethodName="Prices with data set &quot;#1 Data Set: 9.34€ Netto - 11.1146€ Brutto - 1.7746€ Tax&quot;" status="0" time="0.0001129" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Price"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\PriceTest" methodName="testPrices with data set &quot;#2 Data Set: 2.10€ Netto - 2.499€ Brutto - 0.399€ Tax&quot;" prettifiedClassName="Price (domipoppe\sharkpay\Tests\Price)" prettifiedMethodName="Prices with data set &quot;#2 Data Set: 2.10€ Netto - 2.499€ Brutto - 0.399€ Tax&quot;" status="0" time="0.0001298" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Price"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\TaxTest" methodName="testGetTaxFromAmount with data set &quot;#0 Data Set: When 2,00 € we expect 0,38 € tax (19%)&quot;" prettifiedClassName="Tax (domipoppe\sharkpay\Tests\Tax)" prettifiedMethodName="Get tax from amount with data set &quot;#0 Data Set: When 2,00 € we expect 0,38 € tax (19%)&quot;" status="0" time="8.98E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Tax::getTaxFromAmount"/>
+  </test>
+  <test className="domipoppe\sharkpay\Tests\TaxTest" methodName="testGetTaxFromAmount with data set &quot;#1 Data Set: When 0,15 € we expect 0,0285 € tax (19%)&quot;" prettifiedClassName="Tax (domipoppe\sharkpay\Tests\Tax)" prettifiedMethodName="Get tax from amount with data set &quot;#1 Data Set: When 0,15 € we expect 0,0285 € tax (19%)&quot;" status="0" time="5.18E-5" size="-1" groups="default">
+    <group name="default"/>
+    <covers target="\domipoppe\sharkpay\Tax::getTaxFromAmount"/>
+  </test>
+</tests>

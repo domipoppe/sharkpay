@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Test Documentation</title>
+        <style>
+            body {
+                text-rendering: optimizeLegibility;
+                font-variant-ligatures: common-ligatures;
+                font-kerning: normal;
+                margin-left: 2em;
+                background-color: #ffffff;
+                color: #000000;
+            }
+
+            body > ul > li {
+                font-family: Source Serif Pro, PT Sans, Trebuchet MS, Helvetica, Arial;
+                font-size: 2em;
+            }
+
+            h2 {
+                font-family: Tahoma, Helvetica, Arial;
+                font-size: 3em;
+            }
+
+            ul {
+                list-style: none;
+                margin-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 id="domipoppe\sharkpay\Tests\OrderTest">Order (domipoppe\sharkpay\Tests\Order)</h2>
+        <ul>
+            <li style="color: #555753;">✓ Order mixed currencies exception</li>
+            <li style="color: #555753;">✓ Cart no discounts same tax</li>
+            <li style="color: #555753;">✓ Cart discount amount same tax</li>
+            <li style="color: #555753;">✓ Cart discount amount mixed tax</li>
+            <li style="color: #555753;">✓ Cart discount amount and percentage mixed tax</li>
+            <li style="color: #555753;">✓ Cart discount amount and percentage same tax</li>
+            <li style="color: #555753;">✓ Cart no discounts mixed tax</li>
+        </ul>
+        <h2 id="domipoppe\sharkpay\Tests\CurrencyTest">Currency (domipoppe\sharkpay\Tests\Currency)</h2>
+        <ul>
+            <li style="color: #555753;">✓ Get main unit string with data set "#0 Data Set: 10 should return 10,00 €"</li>
+            <li style="color: #555753;">✓ Get main unit string with data set "#1 Data Set: 1000 should return 1.000,00 €"</li>
+            <li style="color: #555753;">✓ Get main unit string with data set "#2 Data Set: 0.50 should return 0,50 €"</li>
+            <li style="color: #555753;">✓ Get main unit string with data set "#3 Data Set: 100.50 should return 100,50 €"</li>
+            <li style="color: #555753;">✓ Get in sub unit with data set "#0 Data Set: 10.00€ should return 1000 (ct)"</li>
+            <li style="color: #555753;">✓ Get in sub unit with data set "#1 Data Set: 5.50€ should return 550 (ct)"</li>
+            <li style="color: #555753;">✓ Get main unit string no symbol with data set "#0 Data Set: 10 should return 10,00 €"</li>
+            <li style="color: #555753;">✓ Get main unit string no symbol with data set "#1 Data Set: 1000 should return 1.000,00 €"</li>
+            <li style="color: #555753;">✓ Get main unit string no symbol with data set "#2 Data Set: 0.50 should return 0,50 €"</li>
+            <li style="color: #555753;">✓ Get main unit string no symbol with data set "#3 Data Set: 100.50 should return 100,50 €"</li>
+            <li style="color: #555753;">✓ Get sub unit string with data set "#0 Data Set: 5.10€ should return 510 ct"</li>
+            <li style="color: #555753;">✓ Get sub unit string with data set "#1 Data Set: 1000€ should return 100000 ct"</li>
+            <li style="color: #555753;">✓ Get sub unit string with data set "#2 Data Set: 0.50€ should return 50 ct"</li>
+            <li style="color: #555753;">✓ Get sub unit string no symbol with data set "#0 Data Set: 5.10€ should return 510 ct"</li>
+            <li style="color: #555753;">✓ Get sub unit string no symbol with data set "#1 Data Set: 1000€ should return 100000 ct"</li>
+            <li style="color: #555753;">✓ Get sub unit string no symbol with data set "#2 Data Set: 0.50€ should return 50 ct"</li>
+        </ul>
+        <h2 id="domipoppe\sharkpay\Tests\DiscountTest">Discount (domipoppe\sharkpay\Tests\Discount)</h2>
+        <ul>
+            <li style="color: #555753;">✓ Get discount with data set "#0 Data Set: 10€ Netto, 10% Discount | Expect 1.00€ Discount Value"</li>
+            <li style="color: #555753;">✓ Get discount with data set "#1 Data Set: 4210€ Netto, 105% Discount | Expect 1.00€ Discount Value"</li>
+            <li style="color: #555753;">✓ Get discount with data set "#2 Data Set: 10€ Netto, 5€ Discount | Expect 5.00€ Discount Value"</li>
+        </ul>
+        <h2 id="domipoppe\sharkpay\Tests\PositionTest">Position (domipoppe\sharkpay\Tests\Position)</h2>
+        <ul>
+            <li style="color: #555753;">✓ Position with data set "#0 Data Set: 10€ Netto, 2 Quantity"</li>
+            <li style="color: #555753;">✓ Position with data set "#1 Data Set: 1312.51€ Netto, 4.5 Quantity"</li>
+        </ul>
+        <h2 id="domipoppe\sharkpay\Tests\PriceTest">Price (domipoppe\sharkpay\Tests\Price)</h2>
+        <ul>
+            <li style="color: #555753;">✓ Prices with data set "#0 Data Set: 10€ Netto - 11.90€ Brutto - 1.90€ Tax"</li>
+            <li style="color: #555753;">✓ Prices with data set "#1 Data Set: 9.34€ Netto - 11.1146€ Brutto - 1.7746€ Tax"</li>
+            <li style="color: #555753;">✓ Prices with data set "#2 Data Set: 2.10€ Netto - 2.499€ Brutto - 0.399€ Tax"</li>
+        </ul>
+        <h2 id="domipoppe\sharkpay\Tests\TaxTest">Tax (domipoppe\sharkpay\Tests\Tax)</h2>
+        <ul>
+            <li style="color: #555753;">✓ Get tax from amount with data set "#0 Data Set: When 2,00 € we expect 0,38 € tax (19%)"</li>
+            <li style="color: #555753;">✓ Get tax from amount with data set "#1 Data Set: When 0,15 € we expect 0,0285 € tax (19%)"</li>
+        </ul>
+    </body>
+</html>
