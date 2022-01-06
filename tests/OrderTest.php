@@ -7,6 +7,8 @@ namespace domipoppe\sharkpay\Tests;
 use domipoppe\sharkpay\Currency\EUR;
 use domipoppe\sharkpay\Currency\USD;
 use domipoppe\sharkpay\Exception\MixedCurrenciesException;
+use domipoppe\sharkpay\Exception\OrderAlreadyCalculatedException;
+use domipoppe\sharkpay\Exception\OrderNotCalculatedException;
 use domipoppe\sharkpay\Exception\TaxKeyMixedRatesException;
 use domipoppe\sharkpay\Order;
 use domipoppe\sharkpay\Discount;
@@ -44,6 +46,7 @@ class OrderTest extends TestCase
         $order->addPosition($position2);
         $order->addPosition($position3);
 
+        $order->calculate();
         $total = $order->getTotal();
     }
 
@@ -65,6 +68,7 @@ class OrderTest extends TestCase
         $order->addPosition($position1);
         $order->addPosition($position2);
 
+        $order->calculate();
         $total = $order->getTotal();
     }
 
@@ -90,6 +94,7 @@ class OrderTest extends TestCase
         $order->addPosition($position2);
         $order->addPosition($position3);
 
+        $order->calculate();
         $total = $order->getTotal();
 
         $this->assertCount(1, $total->getTaxPositions());
@@ -123,6 +128,7 @@ class OrderTest extends TestCase
         $order->addPosition($position2);
         $order->addPosition($position3);
 
+        $order->calculate();
         $total = $order->getTotal();
 
         $this->assertCount(2, $total->getTaxPositions());
@@ -161,6 +167,7 @@ class OrderTest extends TestCase
         $order->addPosition($position2);
         $order->addPosition($position3);
 
+        $order->calculate();
         $total = $order->getTotal();
 
         $this->assertCount(2, $total->getTaxPositions());
@@ -197,6 +204,7 @@ class OrderTest extends TestCase
         $order->addPosition($position2);
         $order->addPosition($position3);
 
+        $order->calculate();
         $total = $order->getTotal();
 
         $this->assertCount(3, $total->getTaxPositions());
@@ -235,6 +243,7 @@ class OrderTest extends TestCase
         $order->addPosition($position2);
         $order->addPosition($position3);
 
+        $order->calculate();
         $total = $order->getTotal();
 
         $totalBrutto = 0;
@@ -285,6 +294,7 @@ class OrderTest extends TestCase
         $order->addPosition($position2);
         $order->addPosition($position3);
 
+        $order->calculate();
         $total = $order->getTotal();
 
         $this->assertCount(2, $total->getTaxPositions());
@@ -294,5 +304,69 @@ class OrderTest extends TestCase
         $this->assertEquals(12.94, $total->getTax());
         $this->assertEquals(80.89, $total->getBrutto());
         $this->assertEquals('80,89 €', $total->getBruttoAsString());
+    }
+
+    /**
+     * @covers \domipoppe\sharkpay\Order::getTotal
+     */
+    public function testOrderAlreadyCalculatedException(): void
+    {
+        $this->expectException(OrderAlreadyCalculatedException::class);
+
+        $order = new Order();
+
+        $price1 = new Price(10.50, new EUR(), new Tax());
+        $position1 = new Position($price1, 5);
+
+        $price2 = new Price(5, new EUR(), new Tax());
+        $position2 = new Position($price2, 1);
+
+        $order->addPosition($position1);
+        $order->addPosition($position2);
+
+        $order->calculate();
+        $order->calculate();
+    }
+
+    /**
+     * @covers \domipoppe\sharkpay\Order::getTotal
+     */
+    public function testOrderNotCalculatedException(): void
+    {
+        $this->expectException(OrderNotCalculatedException::class);
+
+        $order = new Order();
+
+        $price1 = new Price(10.50, new EUR(), new Tax());
+        $position1 = new Position($price1, 5);
+
+        $price2 = new Price(5, new EUR(), new Tax());
+        $position2 = new Position($price2, 1);
+
+        $order->addPosition($position1);
+        $order->addPosition($position2);
+
+        $order->getTotal();
+    }
+
+    /**
+     * @covers \domipoppe\sharkpay\Order::getTotal
+     */
+    public function testOrderIsCalculated(): void
+    {
+        $order = new Order();
+
+        $price1 = new Price(10.50, new EUR(), new Tax());
+        $position1 = new Position($price1, 5);
+
+        $price2 = new Price(5, new EUR(), new Tax());
+        $position2 = new Position($price2, 1);
+
+        $order->addPosition($position1);
+        $order->addPosition($position2);
+
+        $order->calculate();
+        $this->assertTrue($order->isCalculated());
+        $order->getTotal();
     }
 }

@@ -5,11 +5,22 @@ Order (domipoppe\sharkpay\Tests\Order)
  [x] Cart discount amount and percentage mixed tax
  [x] Cart discount amount and percentage same tax
  [x] Cart no discounts same tax
- [x] Order mixed currencies exception
  [x] Order tax key mixed rates exception
+ [x] Order is calculated
+ [x] Order mixed currencies exception
+ [x] Order already calculated exception
+ [x] Order not calculated exception
 
 Address (domipoppe\sharkpay\Tests\GEO\Address)
  [x] Address
+
+Invoice (domipoppe\sharkpay\Tests\Invoice\Invoice)
+ [x] Generate invoice
+ [x] Order not calculated exception
+ [x] Order already calculated exception
+
+Reverse Invoice (domipoppe\sharkpay\Tests\Invoice\ReverseInvoice)
+ [x] Reverse invoice
 
 Payable At (domipoppe\sharkpay\Tests\Invoice\PayableAt)
  [x] Get payable at by date time
@@ -51,9 +62,6 @@ Created At (domipoppe\sharkpay\Tests\Invoice\CreatedAt)
  [x] Get created at german format
  [x] Get created at international format
  [x] Get created at day year and month
-
-Invoice (domipoppe\sharkpay\Tests\Invoice\Invoice)
- [x] Generate invoice
 
 Position (domipoppe\sharkpay\Tests\Position)
  [x] Position with data set "#1 Data Set: 1312.51€ Netto, 4.5 Quantity"

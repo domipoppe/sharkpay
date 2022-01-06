@@ -7,6 +7,8 @@ namespace domipoppe\sharkpay\Tests\Invoice;
 use domipoppe\sharkpay\Currency\EUR;
 use domipoppe\sharkpay\Discount;
 use domipoppe\sharkpay\Exception\MixedCurrenciesException;
+use domipoppe\sharkpay\Exception\OrderAlreadyCalculatedException;
+use domipoppe\sharkpay\Exception\OrderNotCalculatedException;
 use domipoppe\sharkpay\Exception\TaxKeyMixedRatesException;
 use domipoppe\sharkpay\Exception\UnknownDiscountTypeException;
 use domipoppe\sharkpay\GEO\Address;
@@ -26,9 +28,58 @@ use PHPUnit\Framework\TestCase;
 class InvoiceTest extends TestCase
 {
     /**
+     * @covers \domipoppe\sharkpay\invoice\Invoice::generateInvoice
+     */
+    public function testOrderNotCalculatedException(): void
+    {
+        $this->expectException(OrderNotCalculatedException::class);
+
+        $discount = new Discount(Discount::DISCOUNT_TYPE_AMOUNT, 2, '2€ Willkommensrabatt');
+
+        $order = new Order();
+        $order->addDiscount($discount);
+
+        $price1 = new Price(10, new EUR(), new Tax());
+        $position1 = new Position($price1, 5);
+
+        $price2 = new Price(5, new EUR(), new Tax());
+        $position2 = new Position($price2, 1);
+
+        $order->addPosition($position1);
+        $order->addPosition($position2);
+        $order->getTotal();
+    }
+
+    /**
+     * @covers \domipoppe\sharkpay\invoice\Invoice::generateInvoice
+     */
+    public function testOrderAlreadyCalculatedException(): void
+    {
+        $this->expectException(OrderAlreadyCalculatedException::class);
+
+        $discount = new Discount(Discount::DISCOUNT_TYPE_AMOUNT, 2, '2€ Willkommensrabatt');
+
+        $order = new Order();
+        $order->addDiscount($discount);
+
+        $price1 = new Price(10, new EUR(), new Tax());
+        $position1 = new Position($price1, 5);
+
+        $price2 = new Price(5, new EUR(), new Tax());
+        $position2 = new Position($price2, 1);
+
+        $order->addPosition($position1);
+        $order->addPosition($position2);
+        $order->calculate();
+        $order->calculate();
+    }
+
+    /**
      * @throws MixedCurrenciesException
      * @throws UnknownDiscountTypeException
      * @throws TaxKeyMixedRatesException
+     * @throws OrderNotCalculatedException
+     * @throws OrderAlreadyCalculatedException
      *
      * @covers \domipoppe\sharkpay\invoice\Invoice::generateInvoice
      */
@@ -47,6 +98,7 @@ class InvoiceTest extends TestCase
 
         $order->addPosition($position1);
         $order->addPosition($position2);
+        $order->calculate();
 
         $billingCountry = new Country('DE', 'Germany', '279');
         $billingAddress = new Address($billingCountry, 'Max Muster', 'Musterstadt', 'Bayern', '92852', 'Zum Tor 5');

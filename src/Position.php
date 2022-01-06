@@ -206,4 +206,12 @@ class Position
     {
         $this->number = $number;
     }
+
+    /**
+     * Will reverse the position
+     */
+    public function reverse(): void
+    {
+        $this->price->setNetto($this->price->getNetto() * -1);
+    }
 }

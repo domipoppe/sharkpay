@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace domipoppe\sharkpay;
 
 use domipoppe\sharkpay\Exception\MixedCurrenciesException;
+use domipoppe\sharkpay\Exception\OrderAlreadyCalculatedException;
+use domipoppe\sharkpay\Exception\OrderNotCalculatedException;
+use domipoppe\sharkpay\Exception\TaxKeyMixedRatesException;
 use domipoppe\sharkpay\Exception\UnknownDiscountTypeException;
 use domipoppe\sharkpay\Total\TotalCalculator;
 
@@ -15,6 +18,8 @@ use domipoppe\sharkpay\Total\TotalCalculator;
  */
 class Order
 {
+    private ?Total\Total $total = null;
+
     /** @var Position[] $positions */
     private array $positions = [];
     /** @var Discount[] $discounts */
@@ -91,12 +96,38 @@ class Order
     }
 
     /**
-     * @return Total\Total
      * @throws MixedCurrenciesException
-     * @throws UnknownDiscountTypeException|Exception\TaxKeyMixedRatesException
+     * @throws TaxKeyMixedRatesException
+     * @throws UnknownDiscountTypeException
+     * @throws OrderAlreadyCalculatedException
+     */
+    public function calculate(): void
+    {
+        if ($this->isCalculated()) {
+            throw new OrderAlreadyCalculatedException();
+        }
+
+        $this->total = TotalCalculator::getTotal($this);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCalculated(): bool
+    {
+        return $this->total instanceof Total\Total;
+    }
+
+    /**
+     * @return Total\Total
+     * @throws OrderNotCalculatedException
      */
     public function getTotal(): Total\Total
     {
-        return TotalCalculator::getTotal($this);
+        if (!$this->isCalculated() || $this->total === null) {
+            throw new OrderNotCalculatedException();
+        }
+
+        return $this->total;
     }
 }

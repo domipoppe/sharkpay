@@ -99,4 +99,18 @@ class Total
     {
         return $this->taxPositions;
     }
+
+    /**
+     * This will reverse the total
+     */
+    public function reverse(): void
+    {
+        $this->totalPriceBrutto->setNetto($this->totalPriceBrutto->getNetto() * -1);
+        $this->totalPriceTax->setNetto($this->totalPriceTax->getNetto() * -1);
+        $this->totalPriceNetto->setNetto($this->totalPriceNetto->getNetto() * -1);
+
+        foreach ($this->taxPositions as $curTaxPosition) {
+            $curTaxPosition->reverse();
+        }
+    }
 }

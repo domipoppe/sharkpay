@@ -62,4 +62,12 @@ class TaxPosition
     {
         return $this->rate;
     }
+
+    /**
+     * This will reverse the tax position
+     */
+    public function reverse(): void
+    {
+        $this->setAmount($this->getAmount() * -1);
+    }
 }

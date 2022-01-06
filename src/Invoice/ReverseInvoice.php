@@ -4,22 +4,19 @@ declare(strict_types=1);
 
 namespace domipoppe\sharkpay\Invoice;
 
-use domipoppe\sharkpay\Exception\OrderNotCalculatedException;
 use domipoppe\sharkpay\GEO\Address;
-use domipoppe\sharkpay\Order;
 use domipoppe\sharkpay\Position;
 use domipoppe\sharkpay\Total\Total;
 
 /**
- * Class Invoice
+ * Class ReverseInvoice
  *
  * @package domipoppe\sharkpay
  */
-class Invoice
+class ReverseInvoice
 {
     /** @var Position[] $positions */
     private array $positions;
-    private int $curPositionNumber = 1;
     private Total $total;
     private CreatedAt $createdAt;
     private PayableAt $payableAt;
@@ -28,38 +25,23 @@ class Invoice
     private ?Address $deliveryAddress;
 
     /**
-     * Will generate an invoice
+     * Will generate an reverse invoice
      *
-     * @param Order        $order
-     * @param CreatedAt    $createdAt
-     * @param PayableAt    $payableAt
-     * @param Address      $address
-     * @param Address      $billingAddress
-     * @param Address|null $deliveryAddress
+     * @param Invoice $invoice
      *
      * @return self
-     * @throws OrderNotCalculatedException
      */
-    public static function generateInvoice(
-        Order $order,
-        CreatedAt $createdAt,
-        PayableAt $payableAt,
-        Address $address,
-        Address $billingAddress,
-        ?Address $deliveryAddress = null
+    public static function generateReverseInvoice(
+        Invoice $invoice
     ): self {
-        if (!$order->isCalculated()) {
-            throw new OrderNotCalculatedException();
-        }
-
         return new self(
-            $createdAt,
-            $payableAt,
-            $order->getPositions(),
-            $order->getTotal(),
-            $address,
-            $billingAddress,
-            $deliveryAddress
+            $invoice->getCreatedAt(),
+            $invoice->getPayableAt(),
+            $invoice->getPositions(),
+            $invoice->getTotal(),
+            $invoice->getAddress(),
+            $invoice->getBillingAddress(),
+            $invoice->getDeliveryAddress()
         );
     }
 
@@ -83,25 +65,17 @@ class Invoice
     ) {
         $this->createdAt = $createdAt;
         $this->payableAt = $payableAt;
-        $this->positions = $this->setPositionNumbers($positions);
+
+        foreach ($positions as $curPosition) {
+            $curPosition->reverse();
+        }
+        $total->reverse();
+
+        $this->positions = $positions;
         $this->total = $total;
         $this->address = $address;
         $this->billingAddress = $billingAddress;
         $this->deliveryAddress = $deliveryAddress;
-    }
-
-    /**
-     * @param Position[] $positions
-     *
-     * @return Position[]
-     */
-    public function setPositionNumbers(array $positions): array
-    {
-        foreach ($positions as $curPosition) {
-            $curPosition->setNumber($this->curPositionNumber);
-            $this->curPositionNumber++;
-        }
-        return $positions;
     }
 
     /**
