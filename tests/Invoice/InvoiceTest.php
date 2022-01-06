@@ -28,7 +28,7 @@ use PHPUnit\Framework\TestCase;
 class InvoiceTest extends TestCase
 {
     /**
-     * @covers \domipoppe\sharkpay\invoice\Invoice::generateInvoice
+     * @covers \domipoppe\sharkpay\invoice\Invoice::generate
      */
     public function testOrderNotCalculatedException(): void
     {
@@ -51,7 +51,7 @@ class InvoiceTest extends TestCase
     }
 
     /**
-     * @covers \domipoppe\sharkpay\invoice\Invoice::generateInvoice
+     * @covers \domipoppe\sharkpay\invoice\Invoice::generate
      */
     public function testOrderAlreadyCalculatedException(): void
     {
@@ -81,7 +81,7 @@ class InvoiceTest extends TestCase
      * @throws OrderNotCalculatedException
      * @throws OrderAlreadyCalculatedException
      *
-     * @covers \domipoppe\sharkpay\invoice\Invoice::generateInvoice
+     * @covers \domipoppe\sharkpay\invoice\Invoice::generate
      */
     public function testGenerateInvoice(): void
     {
@@ -107,7 +107,7 @@ class InvoiceTest extends TestCase
 
         $createdAt = Invoice\CreatedAt::getCreatedAtByDateTime(new \DateTime());
         $payableAt = Invoice\PayableAt::getPayableAtInDays(20);
-        $invoice = Invoice\Invoice::generateInvoice($order, $createdAt, $payableAt, $address, $billingAddress);
+        $invoice = Invoice\Invoice::generate($order, $createdAt, $payableAt, $address, $billingAddress);
 
         $this->assertEquals(53, $invoice->getTotal()->getNetto());
         $this->assertEquals(10.07, $invoice->getTotal()->getTax());

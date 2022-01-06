@@ -54,12 +54,12 @@ class ReverseInvoiceTest extends TestCase
 
         $order->calculate();
 
-        $invoice = Invoice::generateInvoice($order, $createdAt, $payableAt, $address, $billingAddress);
+        $invoice = Invoice::generate($order, $createdAt, $payableAt, $address, $billingAddress);
         $this->assertEquals(53, $invoice->getTotal()->getNetto());
         $this->assertEquals(10.07, $invoice->getTotal()->getTax());
         $this->assertEquals(63.07, $invoice->getTotal()->getBrutto());
 
-        $reverseInvoice = ReverseInvoice::generateReverseInvoice($invoice);
+        $reverseInvoice = ReverseInvoice::generate($invoice);
         $this->assertEquals(-53, $reverseInvoice->getTotal()->getNetto());
         $this->assertEquals(-10.07, $reverseInvoice->getTotal()->getTax());
         $this->assertEquals(-63.07, $reverseInvoice->getTotal()->getBrutto());

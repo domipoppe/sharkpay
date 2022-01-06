@@ -1,13 +1,13 @@
 Order (domipoppe\sharkpay\Tests\Order)
- [x] Cart no discounts mixed tax
+ [x] Cart no discounts same tax
  [x] Cart discount amount same tax
  [x] Cart discount amount mixed tax
  [x] Cart discount amount and percentage mixed tax
  [x] Cart discount amount and percentage same tax
- [x] Cart no discounts same tax
- [x] Order tax key mixed rates exception
- [x] Order is calculated
+ [x] Cart no discounts mixed tax
  [x] Order mixed currencies exception
+ [x] Order is calculated
+ [x] Order tax key mixed rates exception
  [x] Order already calculated exception
  [x] Order not calculated exception
 

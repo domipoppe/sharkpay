@@ -40,7 +40,7 @@ class Invoice
      * @return self
      * @throws OrderNotCalculatedException
      */
-    public static function generateInvoice(
+    public static function generate(
         Order $order,
         CreatedAt $createdAt,
         PayableAt $payableAt,

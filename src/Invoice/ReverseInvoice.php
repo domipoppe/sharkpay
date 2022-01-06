@@ -31,7 +31,7 @@ class ReverseInvoice
      *
      * @return self
      */
-    public static function generateReverseInvoice(
+    public static function generate(
         Invoice $invoice
     ): self {
         return new self(
